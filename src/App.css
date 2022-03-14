@@ -1,0 +1,14 @@
+.App {
+  text-align: center;
+  display: grid;
+  place-content: center;
+}
+
+main{
+  aspect-ratio: 9/16;
+  border-radius: 3px;
+  overflow-y: scroll;
+  height: auto;
+  scroll-snap-type: y mandatory;
+  display: block;
+}
