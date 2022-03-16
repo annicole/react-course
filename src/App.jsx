@@ -1,17 +1,21 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import "./App.css";
+import { Link, Route } from "wouter";
 
-import FeedVideos from './components/FeedVideos/index.jsx'
+import FeedVideos from "./components/FeedVideos/index.jsx";
+import Upload from "./pages/Upload/Upload";
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div className="App">
-      <FeedVideos />
+      <Route path="/">
+        <FeedVideos />
+      </Route>
+      <Route path="/upload">
+        <Upload />
+      </Route>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

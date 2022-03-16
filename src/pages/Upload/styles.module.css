@@ -1,0 +1,106 @@
+.upload{
+    background: #fff;
+    min-height: 100%;
+    padding: 16px;
+}
+
+.upload h1{
+    font-size: 48px;
+    font-weight: 800px;
+}
+
+.upload form{
+    display: flex;
+    flex-direction: column;
+}
+
+.upload label{
+    display: block; 
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+.upload input{
+    display: block;
+    padding: 4px;
+    line-height: 18px;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    margin-top: 14px;
+    font-weight: 400;
+    width: 100%;
+}
+
+.upload form > *{
+    margin-top: 16px;
+}
+
+.dnd{
+    border-radius: 5px;
+    background: #f0f0f0;
+    color:#777;
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 36px;
+    aspect-ratio: 9/16;
+    transition: background-color .3s ease;
+}
+
+.dnd h4{
+    color: #aaa;
+    font-size: 1.2rem;
+    margin: 0 0 16px;
+}
+
+.dnd h5{
+    color: #888;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.dnd img{
+    margin-top: 24px;
+}
+
+.dndReject{
+    background: rgb(233, 116, 116);
+    animation: shake .5s infinite ease;
+}
+
+.dndAccept{
+    background: rgb(170, 189, 170);
+}
+
+.uploading{
+    animation: pulse .5s infinite ease;
+    background-color: #f4f4f4;
+}
+
+.uploaded{
+    background: rgb(177, 216, 179);
+}
+
+@keyframes shake {
+    0% { transform: translate3d(1px, 1px, 0) rotate(1deg); }
+    15% { transform: translate3d(-2px, 0, 0) rotate(0deg); }
+    30% { transform: translate3d(1px, -1px, 0) rotate(-1deg); }
+    45% { transform: translate3d(2px, 1px, 0) rotate(0deg); }
+    60% { transform: translate3d(-2px, -2px, 0) rotate(1deg); }
+    75% { transform: translate3d(2px, 1px, 0) rotate(0deg); }
+    90% { transform: translate3d(-3px, 2px, 0) rotate(-1deg); }
+    100% { transform: translate3d(2px, -2px, 0) rotate(0deg); }
+  }
+
+  @keyframes pulse{
+      0%{
+          opacity: 1;
+          transform: scale(1);
+      }
+      50%{
+          opacity: .8;
+          transform: scale(1.05);
+      }
+  }

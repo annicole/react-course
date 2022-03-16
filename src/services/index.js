@@ -24,3 +24,10 @@ export const uploadVideo = async ({ videoFile }) => {
   const file = data?.Key ? `${prefix}${data.Key}` : ''
   return [error, file]
 }
+
+export const publishVideo = async({videoSrc,description})=>{
+  const{data,error} = await supabase.from('videos')
+  .upload('videos/',src)
+
+  return [error,data]
+}
