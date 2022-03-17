@@ -1,2 +1,2 @@
 # react-course
-React course
+React course, tik tok copy with React, supabase.
