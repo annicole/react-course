@@ -9,7 +9,7 @@ export const getVideos = async () => {
         avatar,
         id
     )
-  `);
+  `).order('created_at',{ascending:false});
   console.log(error);
   return [error, data];
 };
