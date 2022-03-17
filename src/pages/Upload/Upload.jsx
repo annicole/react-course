@@ -2,17 +2,18 @@ import React, { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import {useDropzone} from 'react-dropzone';
 import clsx from "clsx";
-import {uploadVideo} from '../../services/index.js'
+import {publishVideo, uploadVideo} from '../../services/index.js'
 
 export default function Upload() {
   const [uploading,setUploading] = useState(false);
   const [uploaded,setUploaded] = useState(false)
 
-  const onDrop =  (files) => {
+  const onDrop =  async (files) => {
     const [file] = files
     setUploading(true)
-    uploadVideo(file)
-    setUploaded(true)
+    const [error,fileUrl]= await uploadVideo({videoFile:file})
+    if(error) return console.error(error)
+    setUploaded(fileUrl)
   };
 
   const { getRootProps, getInputProps, isDragAccept, isDragReject } =
@@ -29,7 +30,7 @@ export default function Upload() {
 
   const dndClassNames= clsx(styles.dnd,{
     [styles.uploaded] : uploaded,
-    [styles.uploading] : uploading,
+    [styles.uploadingn && !styles.uploaded] : uploading,
     [styles.dndReject] : isDragReject,
     [styles.dndAccept] : isDragAccept
   })
@@ -51,11 +52,22 @@ export default function Upload() {
       </>
     )
   }
+
+  const handleSubmit= async (e)=>{
+    e.preventDefault();
+    if(!uploaded) return;
+
+    const description = e.target.description.value;
+    const [error] = await publishVideo({videoSrc:uploaded,description})
+    if(error) return console.error(error)
+    else console.log("publicado")
+  }
+
   return (
     <div className={styles.upload}>
       <h1>Cargar Videos</h1>
       <p>Este video se publicara</p>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <div {...getRootProps()}>
           <input {...getInputProps()} />
           <div className={dndClassNames}>
@@ -69,7 +81,7 @@ export default function Upload() {
 
         <label>
           Leyenda
-          <input type="text" placeholder="" />
+          <input type="text" name="description" placeholder="" />
         </label>
 
         <button>Publicar</button>
